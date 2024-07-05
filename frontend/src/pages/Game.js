@@ -1,78 +1,75 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../SCSS/Game.scss";
+import Geography from "../images/earth.png";
+import History from "../images/history.png";
+import Einstein from "../images/einstein.png";
+import Science from "../images/science.JPG";
+import Sports from "../images/sports.JPG";
+
 const Game = () => {
-   const [categories, setCategories] = useState({
-      Math: false,
-      Geography: false,
-      History: false,
-   });
+   const initialCategories = [
+      {
+         name: "geography",
+         img: Geography,
+         clicked: false,
+      },
+      {
+         name: "history",
+         img: History,
+         clicked: false,
+      },
+      {
+         name: "science",
+         img: Science,
+         clicked: false,
+      },
+      {
+         name: "sports",
+         img: Sports,
+         clicked: false,
+      },
+      {
+         name: "everything",
+         img: Einstein,
+         clicked: false,
+      },
+   ];
 
-   const [difficulty, setDifficulty] = useState(1);
+   const [category, setCategory] = useState(initialCategories);
 
-   const handleCheckboxChange = (category) => {
-      setCategories((prevCategories) => ({
-         ...prevCategories,
-         [category]: !prevCategories[category],
-      }));
+   const handleCategoryClick = (index) => {
+      const updatedCategories = category.map((cat, idx) => {
+         if (idx === index) {
+            return { ...cat, clicked: !cat.clicked };
+         }
+         return cat;
+      });
+      setCategory(updatedCategories);
    };
-
-   const handleSliderChange = (e) => {
-      setDifficulty(e.target.value);
-   };
-
    return (
-      <div className="app-container">
-         <div className="dashboard">
-            <div className="account-stats">
-               <h2>Account Stats</h2>
-               <ul>
-                  <li>Records</li>
-                  <li>Friends</li>
-                  <li>Settings</li>
-                  <li>Logout</li>
-               </ul>
-            </div>
-            <div className="filters">
-               <h2>Filters</h2>
-               <div className="categories">
-                  <h3>Categories</h3>
-                  {Object.keys(categories).map((category) => (
-                     <div key={category} className="category-item">
-                        <input
-                           type="checkbox"
-                           checked={categories[category]}
-                           onChange={() => handleCheckboxChange(category)}
-                        />
-                        <label>{category}</label>
+      <div className="game-container">
+         <div className="game-wrapper">
+            <div className="categories">
+               <h1>Select your Categories!</h1>
+               <div className="category-list">
+                  {category.map((cat, index) => (
+                     <div key={cat.name} className={cat.name}>
+                        <div
+                           className={
+                              !cat.clicked ? cat.name : cat.name + " greyout"
+                           }
+                           onClick={() => handleCategoryClick(index)}
+                        >
+                           <img src={cat.img} alt={cat.name} />
+                        </div>
                      </div>
                   ))}
                </div>
-               <div className="difficulty">
-                  <h3>Difficulty</h3>
-                  <input
-                     type="range"
-                     min="1"
-                     max="4"
-                     value={difficulty}
-                     onChange={handleSliderChange}
-                     className="slider"
-                  />
-                  <div className="difficulty-labels">
-                     <span>Easy</span>
-                     <span>Medium</span>
-                     <span>Hard</span>
-                     <span>Savant</span>
-                  </div>
+               <div className="play-btn">
+                  <button>Play</button>
                </div>
-               <button
-                  className="apply-button"
-                  onClick={() => console.log("Apply Filters")}
-               >
-                  Apply
-               </button>
             </div>
          </div>
-         <div className="game-container">Let the game begin</div>
       </div>
    );
 };
