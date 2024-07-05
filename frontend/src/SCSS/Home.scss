@@ -1,0 +1,126 @@
+.blog-title {
+   font-size: 45px;
+   text-align: center;
+   color: black;
+   margin: 40px 0 0 20px;
+}
+.blog {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.blogwrapper {
+   position: relative;
+   margin-top: 25px;
+   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+      rgba(0, 0, 0, 0.05) 0px 5px 10px;
+   padding: 20px;
+   color: black;
+   width: 80%;
+   min-height: 100vh;
+   display: flex;
+   background-color: white;
+
+   p {
+      text-align: justify;
+      color: rgba(82, 80, 80, 0.686);
+      font-size: 15px;
+   }
+   h3 {
+      margin: 20px 0;
+      font-size: 20px;
+      text-align: left;
+   }
+   h1 {
+      font-size: 45px;
+   }
+   .date {
+      color: rgba(128, 128, 128, 0.589);
+      font-size: 16px;
+      font-weight: bold;
+      text-align: left;
+      margin-top: 20px;
+   }
+   .center-date {
+      color: rgba(128, 128, 128, 0.589);
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 30px;
+   }
+   .leftwrapper {
+      width: 20%;
+      padding: 0 20px 0 0;
+      text-align: center;
+      .imagewrapper {
+         width: 100%;
+         padding: 3px;
+         img {
+            width: 100%;
+            object-fit: cover;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+         }
+      }
+      .leftside {
+         border-bottom: 4px solid rgba(68, 66, 66, 0.079);
+         padding-bottom: 10px;
+         margin-bottom: 30px;
+      }
+   }
+   .centerwrapper {
+      margin-bottom: 50px;
+      width: 60%;
+      padding: 0 20px;
+      text-align: center;
+      border-left: 4px solid rgba(68, 66, 66, 0.079);
+      border-right: 4px solid rgba(68, 66, 66, 0.079);
+      .center {
+         margin-bottom: 50px;
+         border-bottom: 4px solid rgba(68, 66, 66, 0.079);
+      }
+      button {
+         width: 120px;
+         margin-top: 15px;
+         padding: 10px;
+         margin-bottom: 30px;
+         &:hover {
+            cursor: pointer;
+         }
+      }
+      h1 {
+         margin: 15px 0;
+      }
+      p {
+         font-size: 17px;
+      }
+      .imagewrapper {
+         width: 100%;
+         img {
+            width: 100%;
+            object-fit: cover;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+               rgba(0, 0, 0, 0.05) 0px 5px 10px;
+            height: 500px;
+         }
+      }
+   }
+   .rightwrapper {
+      width: 20%;
+      padding: 0 0 0 20px;
+      text-align: center;
+      .imagewrapper {
+         width: 100%;
+         img {
+            width: 100%;
+            min-height: 400px;
+            object-fit: cover;
+         }
+      }
+   }
+   .rightside {
+      border-bottom: 4px solid rgba(68, 66, 66, 0.079);
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+   }
+}
