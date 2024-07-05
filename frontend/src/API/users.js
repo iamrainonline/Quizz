@@ -41,17 +41,3 @@ export const deleteUser = async (userId) => {
       console.log("Error deleting a user", e);
    }
 };
-
-// EDIT POST
-// export const editPost = async (post, postId, userId) => {
-//    const data = { post: post, postId: postId, userId: userId };
-//    try {
-//       const response = await axios.put("/posts/updatePost/", {
-//          data: data,
-//          withCredentials: true,
-//       });
-//       return response.data;
-//    } catch (e) {
-//       console.log("Error updating a post", e);
-//    }
-// };

@@ -3,9 +3,12 @@ import eu from "../images/eu.png";
 const Footer = () => {
    return (
       <footer>
+         <span>
+            Made by <b>Rain</b>
+         </span>
          <img src={eu} alt="" />
          <span>
-            Made with love <b>React JS</b>
+            <b>June 5th - '24</b>
          </span>
       </footer>
    );

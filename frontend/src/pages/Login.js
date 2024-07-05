@@ -24,38 +24,40 @@ const Login = () => {
          console.log("Authentications: successful", response.data);
          localStorage.setItem("userData", JSON.stringify(response.data));
          setCurrentUser(response.data);
-         navigate("/dashboard");
+         navigate("/game");
       } catch (err) {
          console.log(err);
          setError(err.response.data);
       }
    };
    return (
-      <div className="auth">
-         <h1>Login</h1>
+      <div className="authwrapper">
+         <div className="auth">
+            <h1>Login</h1>
 
-         <form action="">
-            <input
-               required
-               type="text"
-               placeholder="username"
-               name="username"
-               onChange={handleChange}
-            />
-            <input
-               required
-               type="password"
-               placeholder="password"
-               name="password"
-               onChange={handleChange}
-            />
-            <button onClick={handleSubmit}>Login</button>
-            <span>
-               {err && <p>{err}</p>}
-               <br />
-               <Link to="/register">Register</Link>
-            </span>
-         </form>
+            <div className="form">
+               <input
+                  required
+                  type="text"
+                  placeholder="username"
+                  name="username"
+                  onChange={handleChange}
+               />
+               <input
+                  required
+                  type="password"
+                  placeholder="password"
+                  name="password"
+                  onChange={handleChange}
+               />
+               <button onClick={handleSubmit}>Login</button>
+               <span className="alreadyacc">
+                  {err && <p>{err}</p>}
+                  <br />
+                  <Link to="/register">Register</Link>
+               </span>
+            </div>
+         </div>
       </div>
    );
 };

@@ -10,7 +10,8 @@ export const createUser = (req, res) => {
 
    db.query(q, [req.body.email, req.body.name], (err, data) => {
       if (err) return res.json(err);
-      if (data.length) return res.status(409).json("User already exists");
+      if (data.length)
+         return res.status(409).json("User or email already exists");
 
       // Hash the password and create an user
       const salt = bcrypt.genSaltSync(10);

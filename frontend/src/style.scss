@@ -1,143 +1,163 @@
-$hoverColor: rgba(255, 255, 0, 0.058);
+:root {
+   $mainColor: rgba(255, 255, 0, 0.058);
+   $secondColor: rgba(255, 255, 0, 0.058);
+   $thirdColor: rgba(255, 255, 0, 0.058);
+   $touchColor: rgba(255, 255, 0, 0.058);
+
+   $fontColor: rgb(254, 254, 252);
+
+   $defaultPadding: rgba(255, 255, 0, 0.058);
+   $defaultMargin: rgba(255, 255, 0, 0.058);
+
+   $hoverColor: rgba(255, 255, 0, 0.058);
+   $activeColor: rgba(255, 255, 0, 0.058);
+
+   $darkModeColorBG: #ffffff;
+   $darkModeColorText: #ffffff;
+}
 
 * {
    margin: 0;
    padding: 0;
    font-family: arial;
    transition: all 0.3s;
+   body {
+      background-color: var(--darkModeColorBG);
+   }
+   // buttons
    .deleteBtn {
       background-color: #ff1f29;
+      color: var(--fontColor);
+   }
+   .submitBtn {
+      background-color: green;
+      margin: 0;
+   }
+   .disabled {
+      opacity: 0.6;
+      cursor: not-allowed !important;
+      background-color: #7d7f80 !important;
+      color: var(--fontColor !important);
+      &:hover {
+         border: 1px solid red !important;
+      }
+   }
+   button {
+      background-color: #26292c;
+      padding: 9px;
+      font-size: 14px;
       color: white;
+      border-radius: 3px;
+      width: 140px;
+      border: none;
+      border: 1px solid white;
+      margin-right: 10px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      &:hover {
+         cursor: pointer;
+         background-color: white;
+         color: black;
+         border: 1px solid black;
+      }
+      &:active {
+         transform: translateY(3px);
+         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 2px 0px;
+      }
    }
 }
 
-h2 {
-   color: #333;
-   font-size: 24px;
-   margin-bottom: 10px;
-}
-body {
-   background-color: white;
-   color: white;
-}
-button {
-   background-color: #26292c;
-   padding: 9px;
-   font-size: 14px;
-   color: white;
-   border-radius: 3px;
-   width: 140px;
-   border: none;
-   border: 1px solid white;
-   margin-right: 10px;
-   &:hover {
-      cursor: pointer;
-      background-color: white;
-      color: black;
-      border: 1px solid black;
-   }
-}
-
-.submit {
-   background-color: green;
-   margin: 0;
-}
-
-.disabled {
-   opacity: 0.6;
-   cursor: not-allowed !important;
-   background-color: #7d7f80 !important;
-   color: white !important;
-   &:hover {
-      border: 1px solid red !important;
-   }
-}
-.modal {
-   position: absolute;
-   width: 100vw;
-   height: 100vh;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   background-color: #00000089;
-   z-index: 9999;
-   top: 0;
-   flex-direction: column;
-}
-.modalInfo {
-   display: flex;
-   flex-direction: column;
-   gap: 20px;
-}
-.modalwrapper {
-   background-color: white;
-   padding: 50px;
+h1,
+h2,
+p,
+span,
+div {
+   color: var(--darkModeColorText);
 }
 
 .navbar {
    width: 100%;
    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   background-color: var(--darkModeColorBG);
+   color: var(--darkModeColorText);
 }
+
 .navbarwrapper {
    width: 80%;
    height: 90px;
-   background-color: white;
-   color: white;
+   background-color: var(--darkModeColorBG);
+   color: var(--darkModeColorText);
    display: flex;
    align-items: center;
    justify-content: space-between;
    margin: 0 auto;
 
+   .links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+   }
    .links a {
-      color: black;
-      margin: 0 10px;
+      margin: 0 6px;
       text-decoration: none;
       padding: 6px;
+      background-color: var(--darkModeColorBG);
+      color: var(--darkModeColorText);
+
       &:hover {
-         background-color: #26292c;
+         background-color: var(--darkModeColorText);
+         color: var(--darkModeColorBG);
          padding: 6px;
          border-radius: 3px;
-         color: white;
       }
    }
-   .logoutBtn {
-      color: red;
-      &:hover {
-         color: white;
-      }
-   }
-
    .logo img {
       height: 60px;
       width: 60px;
    }
 }
 // login register
+.authwrapper {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
 
 .auth {
+   margin-top: 65px;
    width: 300px;
-   margin: 50px auto;
    padding: 20px;
    border: 1px solid #ccc;
    border-radius: 5px;
    background-color: #f9f9f9;
+   object-fit: cover;
    text-align: center;
    font-size: 16px;
-   .error {
-      color: red;
-   }
-   .alreadyacc {
-      color: #007bff;
-      margin-top: 10px;
-      margin-bottom: 20px;
-   }
    h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
+      font-size: 30px;
       color: black;
    }
 
-   form {
+   .error {
+      color: red;
+      font-weight: bold;
+      font-size: 13px;
+   }
+   .register-response {
+      color: green;
+      font-weight: bold;
+      font-size: 13px;
+   }
+   .alreadyacc {
+      color: #0e0e0e;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      a {
+         font-weight: bold;
+      }
+   }
+
+   .form {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -149,22 +169,6 @@ button {
          margin-bottom: 15px;
          border-radius: 5px;
          border: 1px solid #ccc;
-      }
-
-      button {
-         width: 100%;
-         max-width: 250px;
-         padding: 10px;
-         border: none;
-         border-radius: 5px;
-         background-color: #007bff;
-         color: #fff;
-         font-size: 16px;
-         cursor: pointer;
-
-         &:hover {
-            background-color: #0056b3;
-         }
       }
 
       span {
@@ -189,8 +193,9 @@ button {
    }
 }
 
+// page
 .notfound {
-   background-color: white;
+   background-color: var(--darkModeColorBG);
    color: black;
    text-align: center;
    flex-direction: column;
@@ -205,8 +210,9 @@ footer {
    align-items: center;
    justify-content: center;
    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-   color: black;
-   gap: 30px;
+   background-color: var(--darkModeColorBG);
+   color: var(--darkModeColorText);
+   gap: 10px;
    margin-top: 200px;
    img {
       width: 60px;

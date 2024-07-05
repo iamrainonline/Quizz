@@ -1,0 +1,83 @@
+.app-container {
+   display: flex;
+}
+
+.dashboard {
+   width: 30%;
+   padding: 20px;
+   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.game-container {
+   width: 70%;
+   padding: 20px;
+}
+
+.account-stats {
+   margin-bottom: 20px;
+}
+
+.account-stats h2 {
+   margin-bottom: 10px;
+}
+
+.account-stats ul {
+   list-style: none;
+   padding: 0;
+}
+
+.account-stats li {
+   margin: 10px 0;
+   cursor: pointer;
+}
+
+.filters {
+   margin-top: 20px;
+}
+
+.filters h2 {
+   margin-bottom: 10px;
+}
+
+.categories {
+   margin-bottom: 20px;
+}
+
+.category-item {
+   display: flex;
+   align-items: center;
+   margin-bottom: 10px;
+}
+
+.category-item label {
+   margin-left: 5px;
+}
+
+.difficulty {
+   margin-bottom: 20px;
+}
+
+.slider {
+   width: 100%;
+}
+
+.difficulty-labels {
+   display: flex;
+   justify-content: space-between;
+   margin-top: 10px;
+}
+
+.apply-button {
+   display: block;
+   width: 100%;
+   padding: 10px 20px;
+   background-color: #007bff;
+   color: #fff;
+   border: none;
+   cursor: pointer;
+   text-align: center;
+}
+
+.apply-button:hover {
+   background-color: #0056b3;
+}

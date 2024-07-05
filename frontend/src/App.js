@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
+import Game from "./pages/Game";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -27,10 +27,10 @@ const router = createBrowserRouter([
       element: <Layout />,
       children: [
          {
-            path: "/dashboard",
+            path: "/game",
             element: (
                <PrivateRoute>
-                  <Dashboard />
+                  <Game />
                </PrivateRoute>
             ),
          },

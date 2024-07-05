@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/authContext";
-import Home from "../pages/Home";
+import Game from "../pages/Game";
 
 const PrivateRoute = ({ children }) => {
    const { currentUser } = useContext(AuthContext);
 
-   return currentUser ? children : <Home />;
+   return currentUser ? children : <Game />;
 };
 
 export default PrivateRoute;
