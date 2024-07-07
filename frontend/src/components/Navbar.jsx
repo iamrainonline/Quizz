@@ -35,7 +35,6 @@ const Navbar = () => {
             break;
       }
    };
-   console.log(themeNumber);
    useEffect(() => {
       applyTheme();
    }, [themeNumber, theme]);
@@ -63,6 +62,12 @@ const Navbar = () => {
 
                {currentUser ? (
                   <>
+                     <Link to="/game">
+                        <b> Leaderboards </b>
+                     </Link>
+                     <Link to="/howtoplay">
+                        <b> How to play </b>
+                     </Link>
                      <Link to="/game">
                         <b> Play </b>
                      </Link>

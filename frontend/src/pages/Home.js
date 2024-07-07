@@ -9,7 +9,7 @@ const Home = () => {
       <div className="home">
          <div className="wrapper">
             <h1>
-               Welcome to <span className="quizz-mayas">Quiz Night</span>
+               Welcome to <span className="quizz-mayas">Quiz It</span>
             </h1>
             <p>
                Dive into our engaging trivia game, where you'll flex your

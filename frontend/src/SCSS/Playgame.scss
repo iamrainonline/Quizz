@@ -1,0 +1,237 @@
+.playgame {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 70vh;
+   font-family: "Arial, sans-serif";
+   color: #ecf0f1;
+   padding: 20px;
+
+   .playgame-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 700px;
+      background: linear-gradient(135deg, #2c2c2c, #3b3b3b);
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+         rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+      padding: 20px;
+      box-sizing: border-box;
+   }
+   // frozen screen
+   .playgame-game-frozenwrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 700px;
+      background: linear-gradient(to bottom, #000428, #004e92);
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+         rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+      padding: 20px;
+      box-sizing: border-box;
+   }
+
+   .header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .hourglass {
+         background-color: var(--darkModeColorBG);
+         color: var(--darkModeColorText);
+      }
+      .category-wrapper {
+         position: absolute;
+         right: -180px;
+         top: 0;
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+         font-size: 14px;
+         background-color: var(--darkModeColorBG);
+         color: var(--darkModeColorText);
+         padding: 10px;
+         border-radius: 5px;
+
+         transition: background-color 0.3s;
+      }
+      .powerups {
+         position: absolute;
+         top: 10px;
+         left: -60px;
+         .powerups-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 150px;
+            gap: 15px;
+            margin-left: -100px;
+            .power-up {
+               display: flex;
+               gap: 10px;
+               align-items: center;
+               justify-content: center;
+               position: relative;
+               p {
+                  margin: 0;
+               }
+            }
+            .pu-1 {
+               &:hover::before {
+                  content: "Freezes Timer for 10 seconds";
+                  position: absolute;
+                  left: -210px;
+                  top: 5px;
+                  font-size: 14px;
+                  color: white;
+                  border-radius: 10px;
+                  background-color: black;
+                  padding: 6px;
+                  width: 190px;
+                  text-align: center;
+               }
+            }
+            .pu-2 {
+               &:hover::before {
+                  content: "Skips to next question";
+                  position: absolute;
+                  left: -210px;
+                  top: 5px;
+                  font-size: 14px;
+                  color: white;
+                  border-radius: 10px;
+                  background-color: black;
+                  padding: 6px;
+                  width: 190px;
+                  text-align: center;
+               }
+            }
+            .pu-3 {
+               &:hover::before {
+                  content: "Remove two answers";
+                  position: absolute;
+                  left: -210px;
+                  top: 5px;
+                  font-size: 14px;
+                  color: white;
+                  border-radius: 10px;
+                  background-color: black;
+                  padding: 6px;
+                  width: 190px;
+                  text-align: center;
+               }
+            }
+         }
+
+         img {
+            height: 40px;
+            width: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+            &:hover {
+               cursor: pointer;
+            }
+         }
+      }
+   }
+
+   .timer {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background-color: #444;
+      color: var(--touchColor);
+      border-radius: 5px;
+      font-weight: bold;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+         rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+   }
+   .frozen {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background-color: #444;
+      font-weight: bold;
+      color: rgb(131, 131, 243);
+      font-size: 30px;
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+         rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+   }
+
+   .question-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      .question {
+         font-size: 1.5rem;
+         font-weight: bold;
+         margin-bottom: 50px;
+         margin-top: 15px;
+         color: white;
+      }
+      .lives {
+         position: absolute;
+         top: 0;
+         display: flex;
+         gap: 10px;
+         justify-content: flex-start;
+         width: 100%;
+         padding: 10px;
+         margin-left: 20px;
+      }
+      .buttons {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 20px;
+
+         button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #555;
+            color: #ecf0f1;
+            border: none;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+               rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            transition: background-color 0.3s, transform 0.3s;
+
+            &:hover {
+               background-color: var(--touchColor);
+               color: black;
+               transform: scale(1.05);
+            }
+         }
+      }
+   }
+
+   .play-again-btn {
+      margin-top: 20px;
+
+      button {
+         background-color: var(--darkModeColorBG);
+         color: var(--darkModeColorText);
+         padding: 10px 20px;
+         font-size: 1rem;
+         border-radius: 5px;
+         cursor: pointer;
+         transition: background-color 0.3s, transform 0.3s;
+         box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+            rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+         margin-top: 50px;
+
+         &:hover {
+            background-color: var(--darkModeColorBG);
+            color: var(--darkModeColorText);
+            transform: scale(1.05);
+         }
+      }
+   }
+}

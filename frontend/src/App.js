@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Game from "./pages/Game";
+import Playgame from "./pages/Playgame";
+import Howtoplay from "./pages/Howtoplay";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -35,24 +37,32 @@ const router = createBrowserRouter([
             ),
          },
          {
+            path: "/howtoplay",
+            element: (
+               <PrivateRoute>
+                  <Howtoplay />
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "/Playgame",
+            element: (
+               <PrivateRoute>
+                  <Playgame />
+               </PrivateRoute>
+            ),
+         },
+         {
             path: "/",
             element: <Home />,
          },
          {
             path: "/register",
-            element: (
-               <div>
-                  <Register />
-               </div>
-            ),
+            element: <Register />,
          },
          {
             path: "/login",
-            element: (
-               <div>
-                  <Login />
-               </div>
-            ),
+            element: <Login />,
          },
          {
             path: "*",

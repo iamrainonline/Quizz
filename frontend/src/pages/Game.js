@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../SCSS/Game.scss";
 import Geography from "../images/earth.png";
 import History from "../images/history.png";
@@ -9,33 +10,42 @@ import Sports from "../images/sports.JPG";
 const Game = () => {
    const initialCategories = [
       {
-         name: "geography",
+         name: "Geography",
          img: Geography,
          clicked: false,
       },
       {
-         name: "history",
+         name: "History",
          img: History,
          clicked: false,
       },
       {
-         name: "science",
+         name: "Science",
          img: Science,
          clicked: false,
       },
       {
-         name: "sports",
+         name: "Sports",
          img: Sports,
          clicked: false,
       },
       {
-         name: "everything",
+         name: "General",
          img: Einstein,
          clicked: false,
       },
    ];
 
    const [category, setCategory] = useState(initialCategories);
+   const [selectedOption, setSelectedOption] = useState("Difficulty");
+   const [categoriesSelected, setCategoriesSelected] = useState(false);
+   const [selectedCategories, setSelectedCategories] = useState([]);
+
+   const handleSelect = (e) => {
+      setSelectedOption(e.target.value);
+   };
+
+   const navigate = useNavigate();
 
    const handleCategoryClick = (index) => {
       const updatedCategories = category.map((cat, idx) => {
@@ -45,28 +55,62 @@ const Game = () => {
          return cat;
       });
       setCategory(updatedCategories);
+
+      // Check if any category is selected
+      const anySelected = updatedCategories.some((cat) => cat.clicked);
+      setCategoriesSelected(anySelected);
+
+      // Update state based on selection
+      const selectedCats = updatedCategories.filter((cat) => cat.clicked);
+      setSelectedCategories(selectedCats);
    };
+
    return (
       <div className="game-container">
          <div className="game-wrapper">
             <div className="categories">
-               <h1>Select your Categories!</h1>
+               <h1>Difficulty & Categories</h1>
+
                <div className="category-list">
                   {category.map((cat, index) => (
                      <div key={cat.name} className={cat.name}>
                         <div
                            className={
-                              !cat.clicked ? cat.name : cat.name + " greyout"
+                              cat.clicked ? cat.name : cat.name + " greyout"
                            }
                            onClick={() => handleCategoryClick(index)}
                         >
                            <img src={cat.img} alt={cat.name} />
                         </div>
+                        <p className="catname">
+                           {cat.name}
+                           <input
+                              type="checkbox"
+                              checked={cat.clicked}
+                              onChange={() => {}}
+                           />
+                        </p>
                      </div>
                   ))}
                </div>
+
                <div className="play-btn">
-                  <button>Play</button>
+                  <div className="dropdown-container">
+                     <select
+                        className="dropdown"
+                        value={selectedOption}
+                        onChange={handleSelect}
+                     >
+                        <option value="Difficulty">Difficulty</option>
+                        <option value="All">Include All</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                     </select>
+                  </div>
+                  {categoriesSelected && (
+                     <button onClick={() => navigate("/Playgame")}>Play</button>
+                  )}
                </div>
             </div>
          </div>

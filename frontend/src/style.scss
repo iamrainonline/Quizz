@@ -1,19 +1,22 @@
 :root {
-   $mainColor: rgba(255, 255, 0, 0.058);
-   $secondColor: rgba(255, 255, 0, 0.058);
-   $thirdColor: rgba(255, 255, 0, 0.058);
-   $touchColor: rgba(255, 255, 0, 0.058);
+   --mainColor: rgba(255, 255, 0, 0.058);
+   --secondColor: rgba(255, 255, 0, 0.058);
+   --thirdColor: rgba(255, 255, 0, 0.058);
+   --touchColor: gold;
 
-   $fontColor: rgb(254, 254, 252);
+   --fontColor: rgb(254, 254, 252);
 
-   $defaultPadding: rgba(255, 255, 0, 0.058);
-   $defaultMargin: rgba(255, 255, 0, 0.058);
+   --defaultPadding: 6px;
+   --defaultMargin: 3px;
 
-   $hoverColor: rgba(255, 255, 0, 0.058);
-   $activeColor: rgba(255, 255, 0, 0.058);
+   --hoverColor: rgba(255, 255, 0, 0.058);
+   --activeColor: rgba(255, 255, 0, 0.058);
 
-   $darkModeColorBG: #ffffff;
-   $darkModeColorText: #ffffff;
+   --darkModeColorBG: #ffffff;
+   --darkModeColorText: #ffffff;
+
+   -boxshadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 * {
@@ -51,8 +54,7 @@
       width: 140px;
       border: none;
       border: 1px solid white;
-      margin-right: 10px;
-      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      box-shadow: var(--boxshadow);
       &:hover {
          cursor: pointer;
          background-color: white;

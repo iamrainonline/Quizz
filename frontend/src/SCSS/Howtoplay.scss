@@ -1,0 +1,54 @@
+.howtoplay {
+   max-width: 1000px;
+   margin: 50px auto;
+   padding: 20px;
+   background: linear-gradient(
+      135deg,
+      #191a1b,
+      #0d0b0b
+   ); // Frozen blue gradient
+   border-radius: 15px;
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+   color: var(--darkModeColorText);
+
+   text-align: center;
+}
+
+.howtoplay h2 {
+   text-align: center;
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+   color: var(--darkModeColorText);
+   margin-bottom: 20px;
+   font-size: 28px;
+}
+
+.howtoplay-list {
+   list-style-type: none;
+   padding: 0;
+   font-size: 16px;
+   line-height: 1.8;
+   text-align: left;
+}
+
+.howtoplay-list li {
+   margin-bottom: 20px;
+   background: var(--darkModeColorBG);
+   padding: 6px;
+   border-radius: 10px;
+   display: flex;
+   align-items: center;
+}
+
+.howtoplay-list li b {
+   color: var(--darkModeColorText);
+}
+
+.howtoplay-list ul {
+   list-style-type: disc;
+   margin-left: 20px;
+}
+
+.howtoplay-list li::before {
+   content: "⚪"; // Snowflake icon
+   margin-right: 10px;
+}

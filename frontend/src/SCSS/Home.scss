@@ -1,3 +1,4 @@
+
 .home {
    display: flex;
    align-items: center;
@@ -13,7 +14,7 @@
    position: relative;
 }
 .quizz-mayas {
-   color: gold;
+   color: var(--touchColor);
 }
 .einstein img {
    height: 200px;
@@ -22,6 +23,7 @@
    right: -75px;
    bottom: -68px;
    border-radius: 50%;
+   object-fit: cover;
    &:hover {
       filter: blur(3px);
       cursor: pointer;

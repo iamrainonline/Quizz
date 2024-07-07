@@ -19,13 +19,17 @@
          }
          .play-btn {
             margin-top: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             button {
-               width: 250px;
-               height: 50px;
-               background-color: green;
-               padding: 13px;
-               border: none;
-               box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+               background-color: #349a24; // Darker background for the dropdown
+               border: 2px solid #555; // Dark border color
+               border-radius: 10px;
+               padding: 10px 20px;
+               font-size: 18px;
+               color: #fff; // White text color
                font-size: 20px;
                display: flex;
                align-items: center;
@@ -36,11 +40,40 @@
                }
             }
          }
+         .dropdown-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #2c2c2c; // Dark background color
+            font-family: "Arial", sans-serif;
+         }
+
+         .dropdown {
+            background-color: #444; // Darker background for the dropdown
+            border: 2px solid #555; // Dark border color
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff; // White text color
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         }
+
+         .dropdown:hover {
+            background-color: #555; // Slightly lighter background on hover
+         }
+
+         .dropdown:focus {
+            border-color: #777; // Border color on focus
+         }
+
          .category-list {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 35px;
+            gap: 45px;
             div {
                height: 100px;
                width: 100px;
@@ -54,75 +87,29 @@
                   -webkit-filter: grayscale(100%);
                   filter: grayscale(100%);
                }
+               .catname {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 20px;
+               }
                &:hover {
                   cursor: pointer;
-                  -webkit-filter: grayscale(100%);
-                  filter: grayscale(100%);
                }
-               &:hover .history::before {
-                  content: "History";
-                  background-color: black;
-                  padding: 3px;
-                  font-size: 14px;
-                  border-radius: 3px;
-                  color: white;
-                  position: absolute;
-                  bottom: -30px;
-                  right: 25px;
-               }
-               &:hover .geography::before {
-                  background-color: black;
-                  padding: 3px;
-                  font-size: 14px;
-                  border-radius: 3px;
-                  color: white;
-                  margin-top: 10px;
-                  padding: 3px;
-                  border-radius: 6px;
-                  content: "Geography";
-                  position: absolute;
-                  bottom: -30px;
-                  right: 15px;
-               }
-               &:hover .science::before {
-                  content: "Science";
-                  background-color: black;
-                  padding: 3px;
-                  font-size: 14px;
-                  border-radius: 3px;
-                  color: white;
-                  position: absolute;
-                  bottom: -30px;
-                  right: 25px;
-               }
-               &:hover .everything::before {
-                  content: "Everything";
-                  background-color: black;
-                  padding: 3px;
-                  font-size: 14px;
-                  border-radius: 3px;
-                  color: white;
-                  position: absolute;
-                  bottom: -30px;
-                  right: 10px;
-               }
-               &:hover .sports::before {
-                  content: "Sports";
-                  background-color: black;
-                  padding: 3px;
-                  font-size: 14px;
-                  border-radius: 3px;
-                  color: white;
-                  position: absolute;
-                  bottom: -30px;
-                  right: 25px;
-               }
+
                img {
                   width: 100%;
                   height: 100%;
                   object-fit: cover;
                   border-radius: 50%;
                   border: 1px solid gold;
+               }
+               p {
+                  margin-top: 25px;
+                  background-color: black;
+                  font-size: 12px;
+                  border-radius: 3px;
+                  color: white;
                }
             }
          }
