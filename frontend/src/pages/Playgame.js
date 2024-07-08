@@ -6,6 +6,7 @@ import fifty from "../images/fifty.jpg";
 import freeztime from "../images/frozen_clock.png";
 import skip from "../images/skip.jpg";
 import { AuthContext } from "../context/authContext";
+import { all } from "axios";
 
 const Playgame = () => {
    const [timer, setTimer] = useState(235);
@@ -73,6 +74,9 @@ const Playgame = () => {
 
    // Effect to shuffle questions on component mount
    useEffect(() => {
+      if (typeof allCategories == "undefined") {
+         window.location.href = "/game";
+      }
       const shuffledQuestions = shuffleArray([...QuestionsAPI]);
       // filter categories
       const selectedCategories = allCategories?.map(
