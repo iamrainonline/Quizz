@@ -19,7 +19,8 @@ const Navbar = () => {
       switch (themeNumber) {
          case 0:
             // darkmode
-            root.style.setProperty("--darkModeColorBG", "#26292C");
+            root.style.setProperty("--darkModeColorBG", "#202325");
+            // root.style.setProperty("--darkModeColorBG", "#26292C");
             root.style.setProperty("--darkModeColorText", "#FFFFFF");
             break;
          case 1:

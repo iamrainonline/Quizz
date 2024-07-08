@@ -2,11 +2,7 @@
    max-width: 1000px;
    margin: 50px auto;
    padding: 20px;
-   background: linear-gradient(
-      135deg,
-      #191a1b,
-      #0d0b0b
-   ); // Frozen blue gradient
+   background-color: var(--darkModeColorBG);
    border-radius: 15px;
    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
    color: var(--darkModeColorText);
@@ -16,9 +12,8 @@
 
 .howtoplay h2 {
    text-align: center;
-   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
    color: var(--darkModeColorText);
-   margin-bottom: 20px;
+   margin-bottom: 40px;
    font-size: 28px;
 }
 

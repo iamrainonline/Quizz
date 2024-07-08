@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../SCSS/Game.scss";
 import Geography from "../images/earth.png";
@@ -6,6 +6,7 @@ import History from "../images/history.png";
 import Einstein from "../images/einstein.png";
 import Science from "../images/science.JPG";
 import Sports from "../images/sports.JPG";
+import { AuthContext } from "../context/authContext";
 
 const Game = () => {
    const initialCategories = [
@@ -35,11 +36,10 @@ const Game = () => {
          clicked: false,
       },
    ];
-
    const [category, setCategory] = useState(initialCategories);
    const [selectedOption, setSelectedOption] = useState("Difficulty");
    const [categoriesSelected, setCategoriesSelected] = useState(false);
-   const [selectedCategories, setSelectedCategories] = useState([]);
+   const { allCategories, setAllCategories } = useContext(AuthContext);
 
    const handleSelect = (e) => {
       setSelectedOption(e.target.value);
@@ -62,9 +62,9 @@ const Game = () => {
 
       // Update state based on selection
       const selectedCats = updatedCategories.filter((cat) => cat.clicked);
-      setSelectedCategories(selectedCats);
+      // setSelectedCategories(selectedCats);
+      setAllCategories(selectedCats);
    };
-
    return (
       <div className="game-container">
          <div className="game-wrapper">

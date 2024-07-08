@@ -8,6 +8,7 @@ export const AuthContextProvider = ({ children }) => {
       JSON.parse(localStorage.getItem("userData")) || null
    );
    const [loading, setLoading] = useState(true);
+   const [allCategories, setAllCategories] = useState();
 
    const logout = async () => {
       await axios.post("/auth/logout", null, {
@@ -23,7 +24,14 @@ export const AuthContextProvider = ({ children }) => {
 
    return (
       <AuthContext.Provider
-         value={{ currentUser, logout, loading, setCurrentUser }}
+         value={{
+            currentUser,
+            logout,
+            loading,
+            setCurrentUser,
+            allCategories,
+            setAllCategories,
+         }}
       >
          {children}
       </AuthContext.Provider>

@@ -7,12 +7,24 @@ const Questions = [
       difficulty: "easy",
       points: 10,
    },
-
    {
       question: "Who wrote 'To Kill a Mockingbird'?",
       options: ["Harper Lee", "J.K. Rowling", "Mark Twain", "Ernest Hemingway"],
       category: "Literature",
       correctAnswer: "Harper Lee",
+      difficulty: "medium",
+      points: 15,
+   },
+   {
+      question: "Who has won the most ballon d'ors?",
+      options: [
+         "Lionel Messi",
+         "Cristiano Ronaldo",
+         "Michel Platini",
+         "Ronaldo Nazario de Lima",
+      ],
+      category: "Sports",
+      correctAnswer: "Lionel Messi",
       difficulty: "medium",
       points: 15,
    },
@@ -63,7 +75,7 @@ const Questions = [
       ],
       category: "History",
       correctAnswer: "George Washington",
-      difficulty: "easy",
+      difficulty: "hard",
       points: 10,
    },
    {
@@ -79,7 +91,7 @@ const Questions = [
       options: ["Au", "Ag", "Fe", "Pb"],
       category: "Science",
       correctAnswer: "Au",
-      difficulty: "easy",
+      difficulty: "hard",
       points: 10,
    },
    {
@@ -100,7 +112,7 @@ const Questions = [
       options: ["Seoul", "Beijing", "Tokyo", "Bangkok"],
       category: "Geography",
       correctAnswer: "Tokyo",
-      difficulty: "easy",
+      difficulty: "hard",
       points: 10,
    },
    {
@@ -121,7 +133,7 @@ const Questions = [
       ],
       category: "Geography",
       correctAnswer: "Pacific Ocean",
-      difficulty: "easy",
+      difficulty: "hard",
       points: 10,
    },
    {
