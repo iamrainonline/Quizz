@@ -8,7 +8,7 @@ import Science from "../images/science.JPG";
 import Sports from "../images/sports.png";
 import Cinema from "../images/cinema.jpg";
 import { AuthContext } from "../context/authContext";
-
+import { FaSkull } from "react-icons/fa";
 const Game = () => {
    const initialCategories = [
       {
@@ -110,13 +110,19 @@ const Game = () => {
                         <option disabled value="">
                            Select difficulty
                         </option>
-                        <option value="All">
-                           <p>lol</p>
-                        </option>
+                        <option value="All">All</option>
                         <option value="Easy">Easy</option>
                         <option value="Medium">Medium</option>
                         <option value="Hard">Hard</option>
-                        <option value="Hard">Hardcore</option>
+                        <option
+                           value="Hard"
+                           style={{
+                              backgroundColor: "red",
+                              padding: "2px",
+                           }}
+                        >
+                           Hardcore 💀
+                        </option>
                      </select>
                   </div>
                   {categoriesSelected && (
