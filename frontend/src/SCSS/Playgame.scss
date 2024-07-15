@@ -8,6 +8,8 @@
    padding: 20px;
 
    .playgame-wrapper {
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, 0.137);
       margin-top: 90px;
       position: relative;
       display: flex;
@@ -15,7 +17,9 @@
       align-items: center;
       min-width: 1200px;
       min-height: 500px;
-      background: linear-gradient(135deg, #173944, #2c1d2bcb);
+      background-color: #242424 !important;
+      background-repeat: no-repeat !important;
+      background-size: cover !important;
       border-radius: 10px;
       box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
          rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -24,6 +28,8 @@
    }
    // frozen screen
    .playgame-game-frozenwrapper {
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, 0.137);
       margin-top: 90px;
       position: relative;
       display: flex;
@@ -31,20 +37,29 @@
       align-items: center;
       width: 1200px;
       min-height: 500px;
-      background: linear-gradient(135deg, #3b62c3, #b2ebf2, #80deea, #3b62c3);
+      background-color: #242424 !important;
+      background-repeat: no-repeat !important;
+      background-size: cover !important;
       border-radius: 10px;
       box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
          rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
       padding: 20px;
       box-sizing: border-box;
    }
-
+   .icycle {
+      position: absolute;
+      top: -13px;
+      z-index: 50;
+      height: 72px;
+      width: 1000px;
+   }
    .header {
       display: flex;
       width: 100%;
       justify-content: space-between;
 
       .category-wrapper {
+         border: 2px solid rgba(255, 255, 255, 0.137);
          display: flex;
          flex-direction: column;
          justify-content: space-between;
@@ -63,8 +78,14 @@
          }
       }
       .lives {
+         border-radius: 6px;
+         background-color: var(--darkModeColorBG);
+         border: 2px solid rgba(255, 255, 255, 0.137);
+         position: absolute;
+         bottom: 20px;
+         left: 20px;
          display: flex;
-         gap: 10px;
+         gap: 22px;
          padding: 10px;
          align-items: center;
          justify-content: center;
@@ -75,6 +96,8 @@
       }
 
       .powerups {
+         border: 2px solid rgba(255, 255, 255, 0.137);
+         z-index: 9999;
          display: flex;
          background-color: var(--darkModeColorBG);
          color: var(--darkModeColorText);
@@ -87,12 +110,22 @@
          min-width: 120px;
          border-radius: 6px;
          gap: 15px;
+
          .power-up {
             display: flex;
             gap: 10px;
             align-items: center;
             justify-content: center;
             position: relative;
+            padding: 4px;
+            border-radius: 6px;
+            width: 100%;
+            &:hover {
+               cursor: pointer;
+               padding: 4px;
+               border-radius: 6px;
+               background-color: rgb(227, 70, 8);
+            }
             p {
                margin: 0;
             }
@@ -154,7 +187,42 @@
          }
       }
    }
+   .main-question-div {
+      display: flex;
+      flex-direction: column;
+   }
+   .diff {
+      font-size: 14px;
+      color: white;
+   }
+   .question-text {
+      margin: 5px 0px 20px 0;
+      width: 100%;
+      min-width: 300px;
+      text-align: left;
+      color: white;
+   }
+   .questionAndFlag {
+      display: flex;
+   }
+   .playagainbtn {
+      background-color: var(--darkModeColorBG);
+      color: var(--darkModeColorText);
+      border: 2px solid rgba(255, 255, 255, 0.137);
+   }
+   .flag {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      margin-bottom: 20px;
 
+      img {
+         object-fit: contain;
+         box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+            rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+      }
+   }
    .timer {
       display: flex;
       align-items: center;
@@ -165,13 +233,18 @@
       border-radius: 5px;
       font-weight: bold;
    }
+
+   .loading-timer {
+      height: 12px;
+      background-color: rgb(237, 130, 37);
+      border-radius: 10px;
+   }
    .frozen {
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 3rem;
       margin-bottom: 20px;
-      color: rgb(79, 158, 255);
       border-radius: 5px;
       font-weight: bold;
       box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
@@ -179,12 +252,17 @@
    }
 
    .question-section {
+      background: linear-gradient(#433f3f7a, #185ef217);
+      margin-top: -100px;
+      border: 2px solid rgba(255, 255, 255, 0.137);
+      max-width: 450px;
+      padding: 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
       .question {
-         font-size: 1.8rem;
+         font-size: 1.4rem;
          font-weight: bold;
          margin-bottom: 120px;
          color: white;
@@ -193,52 +271,31 @@
 
       .buttons {
          display: grid;
-         grid-template-columns: 1fr 1fr;
+         grid-template-columns: repeat(2, 1fr); /* Create 2 equal columns */
+         grid-template-rows: repeat(2, auto); /* Create rows to fit content */
          gap: 20px;
-
-         button {
-            min-width: 160px;
-            width: 100%;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            background-color: var(--darkModeColorBG);
-            color: var(--darkModeColorText);
-            border: 1px solid rgba(255, 255, 255, 0.162);
-            border-radius: 5px;
-            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-               rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-            transition: background-color 0.3s, transform 0.3s;
-
-            &:hover {
-               background-color: var(--touchColor);
-               color: black;
-               transform: scale(1.05);
-            }
-         }
+         margin-top: 50px;
       }
-   }
 
-   .play-again-btn {
-      margin-top: 20px;
-
-      button {
-         background-color: var(--darkModeColorBG);
-         color: var(--darkModeColorText);
+      .buttons button {
+         min-width: 160px;
+         width: 100%;
          padding: 10px 20px;
          font-size: 1rem;
-         border-radius: 5px;
          cursor: pointer;
-         transition: background-color 0.3s, transform 0.3s;
+         background-color: var(--darkModeColorBG);
+         color: var(--darkModeColorText);
+         border: 1px solid rgba(255, 255, 255, 0.162);
+         border-radius: 5px;
          box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
             rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-         margin-top: 50px;
+         transition: background-color 0.3s, transform 0.3s;
+      }
 
-         &:hover {
-            background-color: var(--darkModeColorBG);
-            color: var(--darkModeColorText);
-            transform: scale(1.05);
-         }
+      .buttons button:hover {
+         background-color: var(--touchColor);
+         color: black;
+         transform: scale(1.05);
       }
    }
 }

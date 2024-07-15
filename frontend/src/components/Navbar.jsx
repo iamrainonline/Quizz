@@ -63,7 +63,7 @@ const Navbar = () => {
 
                {currentUser ? (
                   <>
-                     <Link to="/game">
+                     <Link to="/leaderboard">
                         <b> Leaderboards </b>
                      </Link>
                      <Link to="/howtoplay">

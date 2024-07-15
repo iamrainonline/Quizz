@@ -1,0 +1,94 @@
+.leaderboard {
+   max-width: 800px;
+   margin: 30px auto;
+   padding: 20px;
+   background-color: var(--darkModeColorBG);
+   border-radius: 15px;
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+   color: white;
+   text-align: center;
+   font-family: "Arial", sans-serif;
+
+   h2 {
+      color: gold;
+      margin-bottom: 20px;
+      font-size: 32px;
+      font-weight: bold;
+   }
+
+   .leaderboard-table {
+      background-color: var(--darkModeColorBG);
+      border-radius: 15px;
+      padding: 20px;
+      overflow: hidden;
+
+      .leaderboard-header {
+         display: grid;
+         grid-template-columns: 1fr 2fr 1fr 1fr; /* Added a column for Date */
+         font-weight: bold;
+         font-size: 20px;
+         border-bottom: 2px solid gold;
+         padding-bottom: 10px;
+         margin-bottom: 10px;
+
+         .header-rank,
+         .header-name,
+         .header-points,
+         .header-date {
+            padding: 10px;
+            color: white;
+         }
+      }
+
+      .leaderboard-body {
+         .leaderboard-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr 1fr; /* Adjusted for Date column */
+            align-items: center;
+            font-size: 18px;
+            padding: 10px 0;
+            transition: background-color 0.3s ease;
+
+            &:nth-child(even) {
+               background-color: #333;
+            }
+
+            .rank {
+               display: flex;
+               align-items: center;
+               justify-content: center;
+
+               .gold-icon {
+                  color: gold;
+                  margin-right: 5px;
+               }
+
+               .silver-icon {
+                  color: silver;
+                  margin-right: 5px;
+               }
+
+               .bronze-icon {
+                  color: #cd7f32; /* Bronze color */
+                  margin-right: 5px;
+               }
+
+               span {
+                  margin-right: 10px;
+               }
+            }
+
+            .name,
+            .points,
+            .date {
+               text-align: center;
+               padding: 10px;
+            }
+            .points {
+               color: gold;
+               font-weight: bold;
+            }
+         }
+      }
+   }
+}

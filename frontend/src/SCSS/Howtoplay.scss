@@ -1,49 +1,75 @@
 .howtoplay {
    max-width: 1000px;
-   margin: 50px auto;
+   margin: 30px auto;
    padding: 20px;
    background-color: var(--darkModeColorBG);
    border-radius: 15px;
    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
    color: var(--darkModeColorText);
-
    text-align: center;
-}
+   font-family: "Arial", sans-serif;
 
-.howtoplay h2 {
-   text-align: center;
-   color: var(--darkModeColorText);
-   margin-bottom: 40px;
-   font-size: 28px;
-}
+   h2 {
+      color: gold;
+      margin-bottom: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 55px;
+   }
+   .playbtn {
+      border: 2px solid rgba(255, 255, 255, 0.137);
+      margin: 25px 0;
+   }
+   .howtoplay-card {
+      background-color: #2a2a2a;
+      border-radius: 15px;
+      border: 2px solid rgba(255, 255, 255, 0.137);
 
-.howtoplay-list {
-   list-style-type: none;
-   padding: 0;
-   font-size: 16px;
-   line-height: 1.8;
-   text-align: left;
-}
+      padding: 20px;
+   }
 
-.howtoplay-list li {
-   margin-bottom: 20px;
-   background: var(--darkModeColorBG);
-   padding: 6px;
-   border-radius: 10px;
-   display: flex;
-   align-items: center;
-}
+   .howtoplay-list {
+      list-style-type: none;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: left;
 
-.howtoplay-list li b {
-   color: var(--darkModeColorText);
-}
+      li {
+         margin-bottom: 15px;
+         background: var(--lightModeColorBG);
+         padding: 10px;
+         border-radius: 10px;
+         display: flex;
+         align-items: flex-start;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         border: 2px solid rgba(255, 255, 255, 0.137);
 
-.howtoplay-list ul {
-   list-style-type: disc;
-   margin-left: 20px;
-}
+         .icon {
+            font-size: 24px;
+            margin-right: 10px;
+            color: gold;
+         }
 
-.howtoplay-list li::before {
-   content: "⚪"; // Snowflake icon
-   margin-right: 10px;
+         b {
+            color: gold;
+         }
+
+         ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-top: 5px;
+
+            .points {
+               color: gold;
+               font-weight: bold;
+            }
+
+            .reward {
+               color: gold;
+               font-weight: bold;
+            }
+         }
+      }
+   }
 }

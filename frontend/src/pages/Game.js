@@ -5,7 +5,8 @@ import Geography from "../images/earth.png";
 import History from "../images/history.png";
 import Einstein from "../images/einstein.png";
 import Science from "../images/science.JPG";
-import Sports from "../images/sports.JPG";
+import Sports from "../images/sports.png";
+import Cinema from "../images/cinema.jpg";
 import { AuthContext } from "../context/authContext";
 
 const Game = () => {
@@ -31,20 +32,25 @@ const Game = () => {
          clicked: false,
       },
       {
+         name: "Cinema",
+         img: Cinema,
+         clicked: false,
+      },
+      {
          name: "General",
          img: Einstein,
          clicked: false,
       },
    ];
    const [category, setCategory] = useState(initialCategories);
-   const [selectedOption, setSelectedOption] = useState("Difficulty");
    const [categoriesSelected, setCategoriesSelected] = useState(false);
-   const { allCategories, setAllCategories } = useContext(AuthContext);
+
+   const { allCategories, setAllCategories, difficulty, setDifficulty } =
+      useContext(AuthContext);
 
    const handleSelect = (e) => {
-      setSelectedOption(e.target.value);
+      setDifficulty(e.target.value);
    };
-
    const navigate = useNavigate();
 
    const handleCategoryClick = (index) => {
@@ -98,14 +104,19 @@ const Game = () => {
                   <div className="dropdown-container">
                      <select
                         className="dropdown"
-                        value={selectedOption}
+                        value={difficulty}
                         onChange={handleSelect}
                      >
-                        <option value="Difficulty">Difficulty</option>
-                        <option value="All">Include All</option>
+                        <option disabled value="">
+                           Select difficulty
+                        </option>
+                        <option value="All">
+                           <p>lol</p>
+                        </option>
                         <option value="Easy">Easy</option>
                         <option value="Medium">Medium</option>
                         <option value="Hard">Hard</option>
+                        <option value="Hard">Hardcore</option>
                      </select>
                   </div>
                   {categoriesSelected && (

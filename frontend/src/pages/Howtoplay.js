@@ -1,46 +1,109 @@
 import React from "react";
+import {
+   FaHeart,
+   FaSnowflake,
+   FaArrowRight,
+   FaStar,
+   FaSkull,
+   FaRedo,
+   FaBolt,
+} from "react-icons/fa";
 import "../SCSS/Howtoplay.scss";
 
 const Howtoplay = () => {
    return (
       <div className="howtoplay">
          <h2>How to Play</h2>
-         <ul className="howtoplay-list">
-            <li>
-               <b>You have 3 lives:</b> If you answer wrong, you lose a life.
-            </li>
-            <li>
-               <b>Points:</b> An easy question is worth 10 points, medium 15
-               points, and hard 20 points. Points only count for leaderboards
-            </li>
-            <li>
-               <b>Streak Rewards:</b>
-               <ul>
-                  <li>At 10 streak, you win a freeze time.</li>
-                  <li>At 20 streak, you win a life.</li>
-                  <li>At 30 streak, you win a 50/50.</li>
-               </ul>
-            </li>
-            <li>
-               <b>Freeze Time: </b> A freeze time will stop the timer for 10
-               seconds. (Freeze time can stack)
-            </li>
-            <li>
-               <b>Skip Question:</b> You have the Skip question button that will
-               skip the current question. You have 3 skips.
-            </li>
-            <li>
-               <b>50/50 Button:</b> This button will remove two random incorrect
-               answers. You have 3 uses.
-            </li>
-            <li>
-               <b>When you lose:</b> Your stop time, skip question, and 50/50
-               reset to 3/3 each.
-            </li>
-            <li>
-               <b>Good luck!</b>
-            </li>
-         </ul>
+         <div className="howtoplay-card">
+            <ul className="howtoplay-list">
+               <li>
+                  <FaHeart className="icon" color="red" />
+                  <div>
+                     <b>You have 3 lives:</b> You start with three lives. If you
+                     answer incorrectly, you lose a life. Lose all three lives,
+                     and it's game over.
+                  </div>
+               </li>
+               <li>
+                  <FaStar className="icon" />
+                  <div>
+                     <b>Points:</b>
+                     <ul>
+                        <li>
+                           Easy question:{" "}
+                           <span className="points">10 points</span>
+                        </li>
+                        <li>
+                           Medium question:{" "}
+                           <span className="points">15 points</span>
+                        </li>
+                        <li>
+                           Hard question:{" "}
+                           <span className="points">20 points</span>
+                        </li>
+                     </ul>
+                     Accumulate points to climb up the leaderboards!
+                  </div>
+               </li>
+               <li>
+                  <FaBolt className="icon" color="#007ACC" />
+                  <div>
+                     <b>Streak Rewards:</b> Keep answering correctly to build a
+                     streak and earn rewards:
+                     <ul>
+                        <li>
+                           10 streak:{" "}
+                           <span className="reward">Freeze Time power-up</span>
+                        </li>
+                        <li>
+                           20 streak: <span className="reward">Extra life</span>
+                        </li>
+                        <li>
+                           30 streak:{" "}
+                           <span className="reward">50/50 power-up</span>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li>
+                  <FaSnowflake className="icon" color="#007ACC" />
+                  <div>
+                     <b>Freeze Time:</b> Use this power-up to stop the timer for
+                     10 seconds. This can be stacked for strategic advantage.
+                  </div>
+               </li>
+               <li>
+                  <FaArrowRight className="icon" />
+                  <div>
+                     <b>Skip Question:</b> Not sure about a question? Use the
+                     Skip Question button to move on to the next one. You have 3
+                     skips available.
+                  </div>
+               </li>
+               <li>
+                  <FaArrowRight className="icon" />
+                  <div>
+                     <b>50/50 Button:</b> Remove two incorrect answers with this
+                     power-up, giving you a better chance of choosing the right
+                     answer. You can use this 3 times.
+                  </div>
+               </li>
+               <li>
+                  <FaRedo className="icon" />
+                  <div>
+                     <b>When you lose:</b> Don't worry! If you lose, your
+                     power-ups will reset to 3 each, and you can try again.
+                  </div>
+               </li>
+               <li>
+                  <FaSkull className="icon" color="#E23C2F" />
+                  <div>
+                     <b>Good luck!</b> Have fun and aim for the highest score!
+                  </div>
+               </li>
+            </ul>
+            <button className="playbtn">PLAY</button>
+         </div>
       </div>
    );
 };

@@ -8,6 +8,7 @@ export const AuthContextProvider = ({ children }) => {
       JSON.parse(localStorage.getItem("userData")) || null
    );
    const [loading, setLoading] = useState(true);
+   const [difficulty, setDifficulty] = useState("");
    const [allCategories, setAllCategories] = useState();
 
    const logout = async () => {
@@ -25,6 +26,8 @@ export const AuthContextProvider = ({ children }) => {
    return (
       <AuthContext.Provider
          value={{
+            difficulty,
+            setDifficulty,
             currentUser,
             logout,
             loading,

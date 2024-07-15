@@ -8,6 +8,7 @@ import Howtoplay from "./pages/Howtoplay";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import Leaderboard from "./pages/Leaderboard";
 import NotFound from "./components/NotFound";
 // css
 import "./style.scss";
@@ -49,6 +50,14 @@ const router = createBrowserRouter([
             element: (
                <PrivateRoute>
                   <Playgame />
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "/Leaderboard",
+            element: (
+               <PrivateRoute>
+                  <Leaderboard />
                </PrivateRoute>
             ),
          },
