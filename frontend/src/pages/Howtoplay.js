@@ -56,10 +56,11 @@ const Howtoplay = () => {
                            <span className="reward">Freeze Time power-up</span>
                         </li>
                         <li>
-                           20 streak: <span className="reward">Extra life</span>
+                           15 streak:
+                           <span className="reward">Skip Question</span>
                         </li>
                         <li>
-                           30 streak:{" "}
+                           20 streak:{" "}
                            <span className="reward">50/50 power-up</span>
                         </li>
                      </ul>

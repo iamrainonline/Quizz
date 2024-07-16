@@ -60,7 +60,19 @@ const Playgame = () => {
          setTimer(15);
          setAnswerColor("green");
          setPoints(points + newPoints);
-         setStreak(streak + 1);
+         const newStreak = streak + 1;
+         setStreak(newStreak);
+
+         // Update power-ups based on streak
+         if (newStreak % 10 === 0) {
+            setFreezePowerUp(freezePowerUp + 1);
+         }
+         if (newStreak % 15 === 0) {
+            setSkipPowerUp(skipPowerUp + 1);
+         }
+         if (newStreak % 20 === 0) {
+            setFiftyFifty(fiftyFifty + 1);
+         }
       }
 
       setTimeout(() => {
@@ -132,7 +144,7 @@ const Playgame = () => {
       if (freezeTime) {
          timeoutId = setTimeout(() => {
             setFreezeTime(false);
-         }, 10000);
+         }, 510000);
       }
       return () => clearTimeout(timeoutId);
    }, [freezeTime]);

@@ -115,7 +115,7 @@ const Game = () => {
                         <option value="Medium">Medium</option>
                         <option value="Hard">Hard</option>
                         <option
-                           value="Hard"
+                           value="Hardcore"
                            style={{
                               backgroundColor: "red",
                               padding: "2px",

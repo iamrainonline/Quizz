@@ -232,6 +232,16 @@ const Questions = [
       points: 10,
       background: "/BG/geographybg.png",
    },
+   {
+      question: "ASL PLS?",
+      options: ["Yemen", "Oman", "Saudi Arabia", "United Arab Emirates"],
+      image: "/Flags/fi.png",
+      category: "Geography",
+      correctAnswer: "Yemen",
+      difficulty: "Hardcore",
+      points: 10,
+      background: "/BG/geographybg.png",
+   },
 ];
 
 export default Questions;
