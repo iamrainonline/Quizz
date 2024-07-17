@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import QuestionsAPI from "../API/Questions";
 import "../SCSS/Playgame.scss";
 import { FaHeart } from "react-icons/fa";
 import fifty from "../images/fifty.jpg";
@@ -7,6 +6,7 @@ import freeztime from "../images/frozen_clock.png";
 import skip from "../images/skip.png";
 import { AuthContext } from "../context/authContext";
 import Icycle from "../images/icycle.png";
+import { getQuestions } from "../API/questions";
 
 const Playgame = () => {
    const [timer, setTimer] = useState(15);
@@ -25,8 +25,23 @@ const Playgame = () => {
    const [freezePowerUp, setFreezePowerUp] = useState(3);
    const [skipPowerUp, setSkipPowerUp] = useState(3);
    const [fiftyFifty, setFiftyFifty] = useState(3);
-
    const { allCategories, difficulty } = useContext(AuthContext);
+
+   // fetch Questions
+   useEffect(() => {
+      const fetchQuestions = async () => {
+         const response = await getQuestions();
+         // Parse options string to array
+         const parsedQuestions = response.map((question) => ({
+            ...question,
+            options: Array.isArray(question.options)
+               ? question.options
+               : JSON.parse(question.options),
+         }));
+         setQuestions(parsedQuestions);
+      };
+      fetchQuestions();
+   }, []);
 
    const shuffleArray = (array) => {
       for (let i = array.length - 1; i > 0; i--) {
@@ -35,6 +50,20 @@ const Playgame = () => {
       }
       return array;
    };
+
+   // prevent refresh if streak is bigger than 1 ( game playing )
+   useEffect(() => {
+      const handleBeforeUnload = (event) => {
+         event.preventDefault();
+         event.returnValue = "";
+      };
+      if (streak >= 1) {
+         window.addEventListener("beforeunload", handleBeforeUnload);
+         return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+         };
+      }
+   }, [streak]);
 
    const handleAnswerClick = (
       clickedAnswer,
@@ -96,23 +125,25 @@ const Playgame = () => {
    useEffect(() => {
       if (typeof allCategories === "undefined") {
          window.location.href = "/game";
-      }
-      const shuffledQuestions = shuffleArray([...QuestionsAPI]);
-      const selectedCategories = allCategories?.map(
-         (category) => category.name
-      );
-      if (difficulty !== "All" && difficulty !== "") {
-         const filteredQuestions = shuffledQuestions.filter(
-            (question) =>
-               selectedCategories?.includes(question.category) &&
-               question.difficulty === difficulty
-         );
-         setQuestions(filteredQuestions);
       } else {
-         const filteredQuestions = shuffledQuestions.filter((question) =>
-            selectedCategories?.includes(question.category)
+         const shuffledQuestions = shuffleArray([...questions]);
+         const selectedCategories = allCategories?.map(
+            (category) => category.name
          );
-         setQuestions(filteredQuestions);
+         if (difficulty !== "All" && difficulty !== " ") {
+            const filteredQuestions = shuffledQuestions.filter(
+               (question) =>
+                  selectedCategories?.includes(question.category) &&
+                  question.difficulty === difficulty
+            );
+
+            setQuestions(filteredQuestions);
+         } else {
+            const filteredQuestions = shuffledQuestions.filter((question) =>
+               selectedCategories?.includes(question.category)
+            );
+            setQuestions(filteredQuestions);
+         }
       }
    }, [allCategories, difficulty]);
 
@@ -136,7 +167,9 @@ const Playgame = () => {
    }, [freezeAnswer, freezeTime, timer]);
 
    useEffect(() => {
-      setBackgroundImage(questions[currentQuestionIndex]?.background);
+      if (questions.length > 0) {
+         setBackgroundImage(questions[currentQuestionIndex]?.background);
+      }
    }, [currentQuestionIndex, questions]);
 
    useEffect(() => {
@@ -161,7 +194,7 @@ const Playgame = () => {
       setPoints(0);
       setCurrentQuestionIndex(0);
       setStreak(0);
-      setQuestions(shuffleArray([...QuestionsAPI]));
+      setQuestions(shuffleArray([...questions]));
       setFreezePowerUp(3);
       setSkipPowerUp(3);
       setFiftyFifty(3);
@@ -291,14 +324,18 @@ const Playgame = () => {
                               {questions[currentQuestionIndex]?.question}
                            </div>
 
-                           {questions[currentQuestionIndex]?.image && (
+                           {questions[currentQuestionIndex]?.image ===
+                           "null" ? (
+                              ""
+                           ) : (
                               <div className="flag">
                                  <img
                                     height="120px"
                                     width="150px"
-                                    src={questions[currentQuestionIndex].image}
+                                    src={questions[currentQuestionIndex]?.image}
                                     alt=""
                                  />
+                                
                               </div>
                            )}
                         </div>
