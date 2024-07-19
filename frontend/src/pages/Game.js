@@ -8,7 +8,8 @@ import Science from "../images/science.JPG";
 import Sports from "../images/sports.png";
 import Cinema from "../images/cinema.jpg";
 import { AuthContext } from "../context/authContext";
-import { FaSkull } from "react-icons/fa";
+import { setUserHighscore } from "../API/users";
+
 const Game = () => {
    const initialCategories = [
       {
@@ -45,8 +46,13 @@ const Game = () => {
    const [category, setCategory] = useState(initialCategories);
    const [categoriesSelected, setCategoriesSelected] = useState(false);
 
-   const { allCategories, setAllCategories, difficulty, setDifficulty } =
-      useContext(AuthContext);
+   const {
+      allCategories,
+      setAllCategories,
+      difficulty,
+      setDifficulty,
+      currentUser,
+   } = useContext(AuthContext);
 
    const handleSelect = (e) => {
       setDifficulty(e.target.value);
@@ -68,9 +74,18 @@ const Game = () => {
 
       // Update state based on selection
       const selectedCats = updatedCategories.filter((cat) => cat.clicked);
-      // setSelectedCategories(selectedCats);
       setAllCategories(selectedCats);
    };
+
+   const handlePlay = async () => {
+      try {
+         const response = await setUserHighscore(currentUser.user_id, 0);
+         navigate("/Playgame");
+      } catch (error) {
+         console.error("Failed to set highscore:", error);
+      }
+   };
+
    return (
       <div className="game-container">
          <div className="game-wrapper">
@@ -126,7 +141,7 @@ const Game = () => {
                      </select>
                   </div>
                   {categoriesSelected && (
-                     <button onClick={() => navigate("/Playgame")}>Play</button>
+                     <button onClick={handlePlay}>Play</button>
                   )}
                </div>
             </div>

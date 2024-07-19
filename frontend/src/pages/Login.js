@@ -2,6 +2,7 @@ import { React, useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+import { getUserHighscore } from "../API/users";
 
 const Login = () => {
    const { currentUser, setCurrentUser } = useContext(AuthContext);

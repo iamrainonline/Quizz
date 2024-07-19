@@ -54,3 +54,27 @@ export const deleteUser = (req, res) => {
       });
    });
 };
+
+// get users highscore
+export const getUsersHighscore = (req, res) => {
+   const q = "SELECT * FROM  highscores ORDER BY id DESC";
+
+   db.query(q, (err, data) => {
+      if (err) return res.json(err);
+      return res.json(data);
+   });
+};
+
+// set users highscore
+
+export const setUserHighscore = (req, res) => {
+   const { userId, score } = req.body.data;
+
+   const q = "INSERT INTO highscores(`score`,`userId`) VALUES (?)";
+   const values = [score, userId];
+
+   db.query(q, [values], (err, data) => {
+      if (err) return res.json(err);
+      return res.json("Highscore saved successfully");
+   });
+};

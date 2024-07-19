@@ -10,6 +10,7 @@ export const AuthContextProvider = ({ children }) => {
    const [loading, setLoading] = useState(true);
    const [difficulty, setDifficulty] = useState("");
    const [allCategories, setAllCategories] = useState();
+   const [userHighscore, setUserHighscore] = useState("");
 
    const logout = async () => {
       await axios.post("/auth/logout", null, {
@@ -34,6 +35,8 @@ export const AuthContextProvider = ({ children }) => {
             setCurrentUser,
             allCategories,
             setAllCategories,
+            userHighscore,
+            setUserHighscore,
          }}
       >
          {children}

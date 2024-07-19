@@ -25,7 +25,8 @@ const Playgame = () => {
    const [freezePowerUp, setFreezePowerUp] = useState(3);
    const [skipPowerUp, setSkipPowerUp] = useState(3);
    const [fiftyFifty, setFiftyFifty] = useState(3);
-   const { allCategories, difficulty } = useContext(AuthContext);
+   const { allCategories, difficulty, userHighscore, setUserHighscore } =
+      useContext(AuthContext);
 
    // fetch Questions
    useEffect(() => {
@@ -40,6 +41,7 @@ const Playgame = () => {
          }));
          setQuestions(parsedQuestions);
       };
+  
       fetchQuestions();
    }, []);
 
@@ -335,7 +337,6 @@ const Playgame = () => {
                                     src={questions[currentQuestionIndex]?.image}
                                     alt=""
                                  />
-                                
                               </div>
                            )}
                         </div>

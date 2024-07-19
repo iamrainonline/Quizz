@@ -41,3 +41,29 @@ export const deleteUser = async (userId) => {
       console.log("Error deleting a user", e);
    }
 };
+
+// get user highscore
+export const getUserHighscore = async () => {
+   try {
+      const response = await axios.get("/users/getUsersHighscore/", {
+         withCredentials: true,
+      });
+      return response.data;
+   } catch (e) {
+      console.log("Error getting user highscore", e);
+   }
+};
+
+// get user highscore
+export const setUserHighscore = async (userId, score) => {
+   const data = { userId: userId, score: score };
+   try {
+      const response = await axios.post("/users/setUserHighscore/", {
+         data: data,
+         withCredentials: true,
+      });
+      return response.data;
+   } catch (e) {
+      console.log("Error setting user highscore", e);
+   }
+};
