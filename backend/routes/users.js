@@ -3,15 +3,19 @@ import {
    getUsers,
    deleteUser,
    createUser,
-   getUsersHighscore,
-   setUserHighscore,
+   getUserHighscore,
+   createUserHighscore,
+   updateUserHighscore,
+   getAllUserHighscores,
 } from "../controllers/users.js";
 
 const router = express.Router();
 
 router.get("/getUsers", getUsers);
-router.get("/getUsersHighscore", getUsersHighscore);
-router.post("/setUserHighscore", setUserHighscore);
+router.get("/getAllUserHighscores", getAllUserHighscores);
+router.post("/getUserHighscore", getUserHighscore);
+router.post("/createUserHighscore", createUserHighscore);
+router.put("/updateUserHighscore", updateUserHighscore);
 router.post("/createUser", createUser);
 router.delete("/deleteUser", deleteUser);
 

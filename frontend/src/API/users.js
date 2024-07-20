@@ -43,9 +43,10 @@ export const deleteUser = async (userId) => {
 };
 
 // get user highscore
-export const getUserHighscore = async () => {
+export const getUserHighscore = async (userId) => {
    try {
-      const response = await axios.get("/users/getUsersHighscore/", {
+      const response = await axios.post("/users/getUserHighscore/", {
+         data: userId,
          withCredentials: true,
       });
       return response.data;
@@ -55,15 +56,42 @@ export const getUserHighscore = async () => {
 };
 
 // get user highscore
-export const setUserHighscore = async (userId, score) => {
+export const createUserHighscore = async (userId, score) => {
    const data = { userId: userId, score: score };
    try {
-      const response = await axios.post("/users/setUserHighscore/", {
+      const response = await axios.post("/users/createUserHighscore/", {
          data: data,
          withCredentials: true,
       });
       return response.data;
    } catch (e) {
       console.log("Error setting user highscore", e);
+   }
+};
+
+// update user highscore
+export const updateUserHighscore = async (userId, score) => {
+   const data = { userId: userId, score: score };
+   try {
+      const response = await axios.put("/users/updateUserHighscore/", {
+         data: data,
+         withCredentials: true,
+      });
+      return response.data;
+   } catch (e) {
+      console.log("Error updating user highscore", e);
+   }
+};
+
+// get all user highscores for leaderboard
+
+export const getAllUserHighscores = async () => {
+   try {
+      const response = await axios.get("/users/getAllUserHighscores/", {
+         withCredentials: true,
+      });
+      return response.data;
+   } catch (e) {
+      console.log("Error getting all user highscores", e);
    }
 };

@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FaTrophy, FaMedal } from "react-icons/fa"; // Import icons from react-icons
 import "../SCSS/Leaderboard.scss";
+import { AuthContext } from "../context/authContext";
+import { getAllUserHighscores } from "../API/users";
+import moment from "moment";
 
 const Leaderboard = () => {
-   // Dummy data for leaderboard (replace with actual data from API or state)
-   const [leaderboardData, setLeaderboardData] = useState([
-      { rank: 1, name: "Bill Gates", points: 250, date: "21 July 2024" },
-      { rank: 2, name: "Jane Smith", points: 220, date: "21 July 2024" },
-      { rank: 3, name: "Alex Johnson", points: 200, date: "21 July 2024" },
-      { rank: 4, name: "Emily Davis", points: 180, date: "21 July 2024" },
-      { rank: 5, name: "Michael Brown", points: 160, date: "21 July 2024" },
-      { rank: 6, name: "Ion Vasile", points: 130, date: "21 July 2024" },
-      { rank: 7, name: "Ana Maria", points: 120, date: "21 July 2024" },
-   ]);
+   const [leaderboardData, setLeaderboardData] = useState([]);
 
-   // Fetch leaderboard data from API or database
+   const { currentUser } = useContext(AuthContext);
+
    useEffect(() => {
-      // Example: fetchLeaderboardData()
-      // Replace with actual fetch logic
-      // fetchLeaderboardData().then(data => setLeaderboardData(data));
+      const fetchData = async () => {
+         try {
+            const response = await getAllUserHighscores();
+            // Sort the data based on points in descending order
+            const sortedData = response.sort((a, b) => b.score - a.score);
+            setLeaderboardData(sortedData);
+         } catch (error) {
+            console.log("error getting all the users highscores", error);
+         }
+      };
+      fetchData();
    }, []);
 
    return (
@@ -33,22 +36,29 @@ const Leaderboard = () => {
             </div>
             <div className="leaderboard-body">
                {leaderboardData.map((player, index) => (
-                  <div key={index} className="leaderboard-row">
+                  <div className="leaderboard-row" key={index}>
                      <div className="rank">
-                        {player.rank === 1 && (
-                           <FaTrophy className="gold-icon" />
-                        )}
-                        {player.rank === 2 && (
-                           <FaMedal className="silver-icon" />
-                        )}
-                        {player.rank === 3 && (
-                           <FaMedal className="bronze-icon" />
-                        )}
-                        {player.rank > 3 && <span>{player.rank}</span>}
+                        {index === 0 && <FaTrophy className="gold-icon" />}
+                        {index === 1 && <FaMedal className="silver-icon" />}
+                        {index === 2 && <FaMedal className="bronze-icon" />}
+                        {index > 2 && <span>{index + 1}</span>}
                      </div>
-                     <div className="name">{player.name}</div>
-                     <div className="points">{player.points}</div>
-                     <div className="date">{player.date}</div>
+                     <div
+                        className="name"
+                        style={{
+                           color:
+                              player.username === currentUser.username
+                                 ? "red"
+                                 : "white",
+                           fontWeight: "bold",
+                        }}
+                     >
+                        {player.username}
+                     </div>
+                     <div className="points">{player.score}</div>
+                     <div className="date">
+                        {moment(player.date).format("MMMM Do YYYY h:mm a")}
+                     </div>
                   </div>
                ))}
             </div>

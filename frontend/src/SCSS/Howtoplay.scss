@@ -1,10 +1,9 @@
 .howtoplay {
-   max-width: 1000px;
+   max-width: 1200px;
    margin: 30px auto;
    padding: 20px;
    background-color: var(--darkModeColorBG);
    border-radius: 15px;
-   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
    color: var(--darkModeColorText);
    text-align: center;
    font-family: "Arial", sans-serif;
@@ -34,16 +33,15 @@
       font-size: 16px;
       line-height: 1.6;
       text-align: left;
-
       li {
          margin-bottom: 15px;
-         background: var(--lightModeColorBG);
          padding: 10px;
          border-radius: 10px;
          display: flex;
          align-items: flex-start;
          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
          border: 2px solid rgba(255, 255, 255, 0.137);
+         color: white;
 
          .icon {
             font-size: 24px;
@@ -54,7 +52,9 @@
          b {
             color: gold;
          }
-
+         div {
+            color: white;
+         }
          ul {
             list-style-type: disc;
             margin-left: 25px;

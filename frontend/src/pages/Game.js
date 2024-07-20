@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useHref, useNavigate } from "react-router-dom";
 import "../SCSS/Game.scss";
 import Geography from "../images/earth.png";
 import History from "../images/history.png";
@@ -8,7 +8,7 @@ import Science from "../images/science.JPG";
 import Sports from "../images/sports.png";
 import Cinema from "../images/cinema.jpg";
 import { AuthContext } from "../context/authContext";
-import { setUserHighscore } from "../API/users";
+import { createUserHighscore, getUserHighscore } from "../API/users";
 
 const Game = () => {
    const initialCategories = [
@@ -52,6 +52,8 @@ const Game = () => {
       difficulty,
       setDifficulty,
       currentUser,
+      userHighscore,
+      setUserHighscore,
    } = useContext(AuthContext);
 
    const handleSelect = (e) => {
@@ -77,10 +79,28 @@ const Game = () => {
       setAllCategories(selectedCats);
    };
 
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const response = await getUserHighscore(currentUser.user_id);
+            setUserHighscore(response[0]);
+         } catch (error) {
+            console.log("cannot fetch user highscore", error);
+         }
+      };
+      fetchData();
+   }, []);
+
    const handlePlay = async () => {
       try {
-         const response = await setUserHighscore(currentUser.user_id, 0);
-         navigate("/Playgame");
+         console.log(userHighscore);
+         if (userHighscore === undefined) {
+            const response = await createUserHighscore(currentUser.user_id, 0);
+            setUserHighscore(0);
+            navigate("/Playgame");
+         } else {
+            navigate("/Playgame");
+         }
       } catch (error) {
          console.error("Failed to set highscore:", error);
       }

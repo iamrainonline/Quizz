@@ -36,7 +36,7 @@
          .header-points,
          .header-date {
             padding: 10px;
-            color: white;
+            color: var(--darkModeColorText);
          }
       }
 
@@ -83,6 +83,7 @@
             .date {
                text-align: center;
                padding: 10px;
+               font-size: 16px;
             }
             .points {
                color: gold;

@@ -55,11 +55,17 @@ export const deleteUser = (req, res) => {
    });
 };
 
-// get users highscore
-export const getUsersHighscore = (req, res) => {
-   const q = "SELECT * FROM  highscores ORDER BY id DESC";
-
-   db.query(q, (err, data) => {
+// get user's highscore
+export const getUserHighscore = (req, res) => {
+   const userId = req.body.data;
+   const q = `
+      SELECT * 
+      FROM highscores H 
+      INNER JOIN users U ON U.user_id = H.userId 
+      WHERE H.userId = ? 
+      ORDER BY H.id DESC
+   `;
+   db.query(q, [userId], (err, data) => {
       if (err) return res.json(err);
       return res.json(data);
    });
@@ -67,7 +73,7 @@ export const getUsersHighscore = (req, res) => {
 
 // set users highscore
 
-export const setUserHighscore = (req, res) => {
+export const createUserHighscore = (req, res) => {
    const { userId, score } = req.body.data;
 
    const q = "INSERT INTO highscores(`score`,`userId`) VALUES (?)";
@@ -76,5 +82,31 @@ export const setUserHighscore = (req, res) => {
    db.query(q, [values], (err, data) => {
       if (err) return res.json(err);
       return res.json("Highscore saved successfully");
+   });
+};
+
+export const updateUserHighscore = (req, res) => {
+   const { userId, score } = req.body.data;
+
+   const q = "UPDATE highscores SET score = ? WHERE userId = ?";
+   const values = [score, userId];
+
+   db.query(q, values, (err, data) => {
+      if (err) return res.json(err);
+      return res.json("Highscore updated successfully");
+   });
+};
+
+// get all users highscores
+export const getAllUserHighscores = (req, res) => {
+   const q = `
+      SELECT * 
+      FROM highscores H
+      INNER JOIN users U on U.user_Id = H.userId
+      ORDER BY H.id DESC
+   `;
+   db.query(q, (err, data) => {
+      if (err) return res.json(err);
+      return res.json(data);
    });
 };

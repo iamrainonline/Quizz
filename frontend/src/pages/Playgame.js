@@ -7,6 +7,7 @@ import skip from "../images/skip.png";
 import { AuthContext } from "../context/authContext";
 import Icycle from "../images/icycle.png";
 import { getQuestions } from "../API/questions";
+import { updateUserHighscore, getUserHighscore } from "../API/users";
 
 const Playgame = () => {
    const [timer, setTimer] = useState(15);
@@ -25,9 +26,15 @@ const Playgame = () => {
    const [freezePowerUp, setFreezePowerUp] = useState(3);
    const [skipPowerUp, setSkipPowerUp] = useState(3);
    const [fiftyFifty, setFiftyFifty] = useState(3);
-   const { allCategories, difficulty, userHighscore, setUserHighscore } =
-      useContext(AuthContext);
 
+   // context store
+   const {
+      allCategories,
+      difficulty,
+      userHighscore,
+      setUserHighscore,
+      currentUser,
+   } = useContext(AuthContext);
    // fetch Questions
    useEffect(() => {
       const fetchQuestions = async () => {
@@ -41,7 +48,7 @@ const Playgame = () => {
          }));
          setQuestions(parsedQuestions);
       };
-  
+
       fetchQuestions();
    }, []);
 
@@ -158,15 +165,20 @@ const Playgame = () => {
          typeof timer === "number"
       ) {
          intervalId = setInterval(() => {
-            setTimer((prevTimer) =>
-               prevTimer === 0 ? "Time is over" : prevTimer - 1
-            );
+            //  UPDATE SCORE FUNCTION
+            setTimer((prevTimer) => {
+               const newTimer =
+                  prevTimer === 0 ? "Time is over" : prevTimer - 1;
+
+               return newTimer;
+            });
          }, 1000);
       } else if (!freezeAnswer && !freezeTime && timer === 0) {
          endGame();
       }
+
       return () => clearInterval(intervalId);
-   }, [freezeAnswer, freezeTime, timer]);
+   }, [freezeAnswer, freezeTime, timer, userHighscore]);
 
    useEffect(() => {
       if (questions.length > 0) {
@@ -179,7 +191,7 @@ const Playgame = () => {
       if (freezeTime) {
          timeoutId = setTimeout(() => {
             setFreezeTime(false);
-         }, 510000);
+         }, 10000);
       }
       return () => clearTimeout(timeoutId);
    }, [freezeTime]);
@@ -189,6 +201,17 @@ const Playgame = () => {
          endGame();
       }
    }, [livesLeft]);
+
+   useEffect(() => {
+      if (points > userHighscore) {
+         const response = updateUserHighscore(currentUser.user_id, points);
+         const renewHighscore = async () => {
+            const response = await getUserHighscore(currentUser.user_id);
+            setUserHighscore(response[0].score);
+         };
+         renewHighscore();
+      }
+   }, [points]);
 
    const resetGame = () => {
       setTimer(15);

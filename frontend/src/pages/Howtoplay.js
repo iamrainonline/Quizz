@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
    FaHeart,
    FaSnowflake,
@@ -9,8 +10,9 @@ import {
    FaBolt,
 } from "react-icons/fa";
 import "../SCSS/Howtoplay.scss";
-
 const Howtoplay = () => {
+   const navigate = useNavigate();
+
    return (
       <div className="howtoplay">
          <h2>How to Play</h2>
@@ -103,7 +105,9 @@ const Howtoplay = () => {
                   </div>
                </li>
             </ul>
-            <button className="playbtn">PLAY</button>
+            <button className="playbtn" onClick={() => navigate("/Game")}>
+               PLAY
+            </button>
          </div>
       </div>
    );

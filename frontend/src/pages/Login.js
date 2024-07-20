@@ -1,11 +1,12 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useHref, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { getUserHighscore } from "../API/users";
 
 const Login = () => {
-   const { currentUser, setCurrentUser } = useContext(AuthContext);
+   const { currentUser, setCurrentUser, userHighscore, setUserHighscore } =
+      useContext(AuthContext);
 
    const [inputs, setInputs] = useState({
       username: "",
@@ -31,6 +32,7 @@ const Login = () => {
          setError(err.response.data);
       }
    };
+
    return (
       <div className="authwrapper">
          <div className="auth">
