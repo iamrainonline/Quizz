@@ -47,7 +47,7 @@ export const login = (req, res) => {
 
       // JWT
       const token = jwt.sign({ id: data[0].id }, "SecretKey");
-      const { password, ...other } = data[0];
+      const { password, role, ...other } = data[0];
 
       // JWT Cookie
       res.cookie("jwt", token, {

@@ -23,7 +23,6 @@ const Login = () => {
       e.preventDefault();
       try {
          const response = await axios.post("/auth/login", inputs);
-         console.log("Authentications: successful", response.data);
          localStorage.setItem("userData", JSON.stringify(response.data));
          setCurrentUser(response.data);
          navigate("/game");

@@ -35,6 +35,7 @@ const Playgame = () => {
       setUserHighscore,
       currentUser,
    } = useContext(AuthContext);
+
    // fetch Questions
    useEffect(() => {
       const fetchQuestions = async () => {
@@ -235,6 +236,41 @@ const Playgame = () => {
       }
    };
 
+   const handleFiftyFifty = () => {
+      if (fiftyFifty > 0) {
+         const currentQuestion = questions[currentQuestionIndex];
+         const correctAnswer = currentQuestion.correctAnswer;
+         const options = currentQuestion.options;
+
+         // Find the index of the correct answer
+         const correctIndex = options.indexOf(correctAnswer);
+
+         // Filter out the correct answer and randomly pick one incorrect answer
+         const incorrectOptions = options.filter(
+            (option) => option !== correctAnswer
+         );
+         const randomIncorrectOption =
+            incorrectOptions[
+               Math.floor(Math.random() * incorrectOptions.length)
+            ];
+
+         // Update the options to just the correct one and one random incorrect answer
+         const updatedOptions = [correctAnswer, randomIncorrectOption];
+         shuffleArray(updatedOptions); // Shuffle to randomize the position of the options
+
+         // Update state with the new options
+         const updatedQuestions = [...questions];
+         updatedQuestions[currentQuestionIndex] = {
+            ...currentQuestion,
+            options: updatedOptions,
+         };
+         setQuestions(updatedQuestions);
+
+         // Decrement the number of 50/50 power-ups left
+         setFiftyFifty(fiftyFifty - 1);
+      }
+   };
+
    return (
       <div className="playgame">
          <div
@@ -312,7 +348,7 @@ const Playgame = () => {
                         <img src={skip} alt="" />
                         <p>({skipPowerUp}/3)</p>
                      </div>
-                     <div className="power-up pu-3">
+                     <div className="power-up pu-3" onClick={handleFiftyFifty}>
                         <img src={fifty} alt="" />
                         <p>({fiftyFifty}/3)</p>
                      </div>

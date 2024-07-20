@@ -8,7 +8,7 @@ const Footer = () => {
          </span>
          <img src={eu} alt="" />
          <span>
-            <b>June 5th - '24</b>
+            <b>Live since June 5th '24</b>
          </span>
       </footer>
    );

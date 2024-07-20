@@ -117,3 +117,17 @@
       }
    }
 }
+
+@media (max-width: 768px) {
+   .categories h1 {
+      text-align: center;
+   }
+   .category-list {
+      display: flex;
+      flex-direction: column;
+
+      div {
+         margin-bottom: 25px;
+      }
+   }
+}

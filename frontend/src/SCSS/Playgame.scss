@@ -300,3 +300,132 @@
       }
    }
 }
+
+@media (max-width: 768px) {
+   .playgame {
+      height: auto; // Allow height to adjust based on content
+
+      .playgame-wrapper {
+         min-width: 100%; // Ensure it fits within the screen
+         min-height: auto; // Allow height to adjust based on content
+      }
+      .question-section {
+         min-height: 270px;
+      }
+
+      .icycle {
+         height: 50px; // Adjust size for smaller screens
+         width: 80%; // Adjust width to fit smaller screens
+         top: -5px; // Adjust positioning
+      }
+
+      .header {
+         display: flex;
+         gap: 10px;
+         .category-wrapper {
+            min-width: 100px; // Adjust minimum width
+            font-size: 14px; // Reduce font size for smaller screens
+            display: none;
+         }
+         .question-section {
+            width: 80%;
+            border: 2px solid white;
+         }
+         .lives {
+            position: static; // Remove absolute positioning
+            gap: 10px; // Adjust gap for smaller screens
+            width: auto; // Allow width to adjust based on content
+         }
+         .timer {
+            font-size: 50px;
+            margin-top: 25px;
+         }
+         .frozen {
+            margin-top: 30px;
+            font-size: 50px;
+         }
+         .powerups {
+            position: static; // Remove absolute positioning
+            min-width: 100px; // Adjust minimum width
+            padding: 10px; // Reduce padding
+            flex-direction: column; // Stack power-ups vertically
+            gap: 10px; // Adjust gap for smaller screens
+
+            .power-up {
+               padding: 2px; // Reduce padding
+               width: 100%; // Ensure it fits within the container
+            }
+
+            img {
+               height: 30px; // Adjust size for smaller screens
+               width: 30px; // Adjust size for smaller screens
+            }
+         }
+      }
+
+      .main-question-div {
+         flex-direction: column; // Ensure it stacks vertically
+         align-items: center; // Center items
+      }
+
+      .question-text {
+         font-size: 22px; // Adjust font size
+         min-width: auto; // Remove minimum width
+         text-align: center; // Center text
+      }
+
+      .questionAndFlag {
+         flex-direction: column; // Stack question and flag vertically
+         align-items: center; // Center items
+      }
+
+      .playagainbtn {
+         padding: 8px 16px; // Adjust padding for smaller screens
+         font-size: 14px; // Adjust font size
+      }
+
+      .flag {
+         width: 100px; // Adjust size for smaller screens
+
+         img {
+            height: 80px; // Adjust size for smaller screens
+            width: 80px; // Adjust size for smaller screens
+         }
+      }
+
+      .timer {
+         font-size: 2rem; // Adjust font size
+         margin-bottom: 10px; // Reduce margin
+      }
+
+      .loading-timer {
+         height: 8px; // Adjust height for smaller screens
+      }
+
+      .frozen {
+         font-size: 2rem; // Adjust font size
+         margin-bottom: 10px; // Reduce margin
+      }
+
+      .question-section {
+         padding: 0;
+         width: 100%;
+         margin-top: 50px;
+         .question {
+            font-size: 1.2rem; // Adjust font size
+            margin-bottom: 40px; // Adjust margin
+         }
+
+         .buttons {
+            padding: 5px;
+            gap: 5px;
+            margin-top: 70px;
+         }
+
+         .buttons button {
+            padding: 8px 16px; // Reduce padding for smaller screens
+            font-size: 0.9rem; // Adjust font size
+         }
+      }
+   }
+}

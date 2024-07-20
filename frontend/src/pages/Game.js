@@ -93,7 +93,6 @@ const Game = () => {
 
    const handlePlay = async () => {
       try {
-         console.log(userHighscore);
          if (userHighscore === undefined) {
             const response = await createUserHighscore(currentUser.user_id, 0);
             setUserHighscore(0);
@@ -110,7 +109,7 @@ const Game = () => {
       <div className="game-container">
          <div className="game-wrapper">
             <div className="categories">
-               <h1>Difficulty & Categories</h1>
+               <h1>Select your Categories & Difficulty</h1>
 
                <div className="category-list">
                   {category.map((cat, index) => (
@@ -156,7 +155,7 @@ const Game = () => {
                               padding: "2px",
                            }}
                         >
-                           Hardcore 💀
+                           Hardcore
                         </option>
                      </select>
                   </div>

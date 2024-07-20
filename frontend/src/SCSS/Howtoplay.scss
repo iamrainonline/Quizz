@@ -1,5 +1,5 @@
 .howtoplay {
-   max-width: 1200px;
+   max-width: 1000px;
    margin: 30px auto;
    padding: 20px;
    background-color: var(--darkModeColorBG);
@@ -71,5 +71,11 @@
             }
          }
       }
+   }
+}
+
+@media (max-width: 768px) {
+   .howtoplay {
+      margin-top: 100px;
    }
 }

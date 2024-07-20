@@ -48,7 +48,7 @@ const Leaderboard = () => {
                         style={{
                            color:
                               player.username === currentUser.username
-                                 ? "red"
+                                 ? "gold"
                                  : "white",
                            fontWeight: "bold",
                         }}
@@ -57,7 +57,7 @@ const Leaderboard = () => {
                      </div>
                      <div className="points">{player.score}</div>
                      <div className="date">
-                        {moment(player.date).format("MMMM Do YYYY h:mm a")}
+                        {moment(player.date).startOf("hour").fromNow()}
                      </div>
                   </div>
                ))}
